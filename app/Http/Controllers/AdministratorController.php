@@ -6,16 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class AdministratorController extends Controller
 {
     public function viewAdmin() {
-        $bd = DB::table('order')->join('products', 'order.product_id', '=', 'products.id')->select('products.*')->get();
-
         if (Auth::user()->name == "bdsta") {
-            return view('admin.administrator', [
-                "produse" => $bd
-            ]);
+            return view('admin.administrator', []);
         } else {
             return redirect('/');
         }
